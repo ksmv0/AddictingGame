@@ -1,7 +1,28 @@
 body {
     width: 320px;
     font: 12pt Helvetica, sans-serif;
+    display: block;
 }
 img, table {
     max-width: 320px;
 } 
+footer {
+    width: 100%;
+    text-align: center;
+ }
+ h1 {
+     width: max-content;
+     font-size: 50px;
+ }
+  
+ p {
+     width: 100%;
+ }
+div {
+    display: block;
+    float: none;
+    width: 100%;
+}
+button {
+    width: 100%;
+}
