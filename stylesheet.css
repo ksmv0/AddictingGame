@@ -1,5 +1,5 @@
 <style>
-        #leftSide {
+        leftSide {
             background: lightblue; 
             padding: 10px;
         }
@@ -13,7 +13,7 @@
             height: 500px;
         }
 
-        #rightSide {
+        rightSide {
             left: 500px;
             border-left: 1px solid
         }
