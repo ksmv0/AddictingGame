@@ -1,34 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexa's Addicting Game</title>
-    <link rel = “stylesheet” href="stylesheet.css">
+    <link rel="stylesheet" href="iphone.css">
+    <title>MOBILE TEST Alexa's Addicting Game</title>
+    
 </head>
 
 <body>
-    
-    <h1 id=title>Spot the Difference Game</h1>
-    <p id="instructions">Click on the extra dyke on the left.</p>
+    <div id="page-container">
+        <h1 id=title>Spot the Difference Game</h1>
+        <p id="instructions">Click on the extra dyke on the top.</p>
 
-    <p>Your level: </p>
-    <h2 id="currentLevel"></h2>
+        <p> <strong> Your level:</strong> </p>
+        <h2 id="currentLevel"></h2>
 
-    <button id=refreshPage onClick="document.location.reload(true)">Start Over</button>
-    <button id=playMusic onclick="playMusic()">Click for an extra dyke vibe</button>
+        <button id=refreshPage onClick="document.location.reload(true)">Start Over</button>
+        <button id=playMusic onclick="playMusic()">Click for an extra dyke vibe</button>
 
-    <main id="gameContainer"> 
-        <div id="leftSide"></div>
-        <div id="rightSide"></div>
-    </main>
-    <!-- SOUNDS-->
-    <audio id="audio" src="https://ksmv0.github.io/hosted-assets/the_nowhere_inn_-8478903002411154434.mp3"></audio>
-    <audio id="clickFace" src="https://ksmv0.github.io/hosted-assets/click.wav"></audio>
-    <audio id="gameOverSound" src="https://ksmv0.github.io/hosted-assets/gameOver.wav"></audio>
+        <main id="gameContainer"> 
+                <div id="leftSide"></div>
+                <div id="rightSide"></div>
+                    <div id="lil"></div>
+        </main>
+    </div>     
+        </main>
+        <!-- SOUNDS-->
+        <audio id="audio" src="https://ksmv0.github.io/hosted-assets/the_nowhere_inn_-8478903002411154434.mp3"></audio>
+        <audio id="clickFace" src="https://ksmv0.github.io/hosted-assets/click.wav"></audio>
+        <audio id="gameOverSound" src="https://ksmv0.github.io/hosted-assets/gameOver.wav"></audio>
 
-    <footer> <p> This is a game made with love for AMV. xoxox</p> </footer>
-<script type="text/javascript" src="scriptAAG.js"></script>
+        <footer>
+            <div class= 'footer'> This is a game made with love for AMV. xoxox </div>
+        </footer>
+
+    <script>
+        //audio
+        function playMusic() {
+            var audio = document.getElementById("audio");
+            audio.play();
+        }
+        //global variables
+        let numberOfFaces = 5;
+        let level = 1
+        const currentLevel = document.getElementById("currentLevel")
+        const theLeftSide = document.getElementById('leftSide');
+        const theRightSide = document.getElementById("rightSide");
+        const gameContainer = document.getElementById("gameContainer")
+        window.addEventListener("load", generateFaces);
+
+        // global audio
+        const clickSound = document.querySelector("#clickFace");
+        const gameOverSound = document.querySelector("#gameOverSound");
+
+        function generateFaces() {
+            for (let i = 0; i < numberOfFaces; i++) {
+
+                let face = document.createElement("img");
+                face.src = "https://ksmv0.github.io/hosted-assets/AlexaAddictingGame.png";
+
+                let randomTop = Math.floor(Math.random() * 400) + 1;
+                let randomLeft = Math.floor(Math.random() * 400) + 1;
+
+                face.style.top = randomTop + 'px';
+                face.style.left = randomLeft + 'px';
+
+                theLeftSide.appendChild(face).removeAttribute("leftSide"); ;
+            }
+            const leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            theRightSide.appendChild(leftSideImages);
+
+            theLeftSide.lastChild.addEventListener("click", nextLevel)
+            gameContainer.addEventListener("click", gameOver)
+
+            //audio
+            theLeftSide.lastChild.addEventListener('click', ()=> {
+            clickSound.play();
+        })
+        
+        function nextLevel() {
+            event.stopPropagation();
+            numberOfFaces += 5;
+            level +=1;
+            
+            while (theLeftSide.lastElementChild) {
+                theLeftSide.removeChild(theLeftSide.lastElementChild);
+            }
+            while (theRightSide.lastElementChild) {
+                theRightSide.removeChild(theRightSide.lastElementChild);
+            }
+            generateFaces();
+        }
+
+        function gameOver() {
+            alert('GAME OVER!')
+            theLeftSide.lastChild.removeEventListener("click", nextLevel)
+            document.body.removeEventListener('click', gameOver)
+        }
+        currentLevel.textContent = level
+
+        function displayLevel() {
+            document.appendChild(currentLevel)
+        }
+    }
+    </script>
 </body>
 </html>
