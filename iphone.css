@@ -1,28 +1,95 @@
-body {
-    width: 320px;
-    font: 12pt Helvetica, sans-serif;
-    display: block;
+html { 
+    background-color: blue;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+
+Body {
+    margin: 0%;
+    height: 100%;
+    width: 100%;
 }
-img, table {
-    max-width: 320px;
-} 
+
+#gameContainer {
+    padding: 0;
+    height: auto;
+}
+
 footer {
+    background-color: white;
+    color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     width: 100%;
+    height: 30px;
     text-align: center;
- }
- h1 {
-     width: max-content;
-     font-size: 50px;
- }
-  
- p {
-     width: 100%;
- }
+}
 div {
-    display: block;
-    float: none;
+    margin: 10px;
+}
+
+h1 {
+width: 100%;
+float: left;
+font-size: 30px;
+}
+
+p {
+    font-size: 20px;
+}
+
+button {
+    font-family: monospace;
+    background-color: white;
+    display:block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border:0.16em solid
+    box-sizing; border-block: 
+    text-decoration; none: 
     width: 100%;
 }
-button {
-    width: 100%;
+
+button:hover {
+    background-color: black;
+    color: white;
+}
+
+#rightSide {
+    background-color: red;
+    padding-top: 5%;
+}
+
+div {
+    position:relative;
+    float: left;
+    width: 500px;
+    height: 500px;
+    display: table
+}
+
+img {
+    position: absolute;
+    size: auto ;
+    width: 70px;
+}
+
+main {
+    display: table
+}
+
+body {
+    color: white;
+    font-family: monospace;
+    font-size: x-large;
+    display: table
+}
+
+footer:hover {
+    color: white;
+    background-color: black;
+    
 }
